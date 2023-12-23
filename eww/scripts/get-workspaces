@@ -1,0 +1,13 @@
+#!/bin/bash
+
+monitor_id=$1
+
+spaces (){
+	WORKSPACE_IDS=$(hyprctl workspaces -j | jq --arg monitor_id "$monitor_id" 'map(select(.monitorID == ($monitor_id | tonumber))) | map(.id) | sort | .[]')
+	echo $WORKSPACE_IDS | sed 's/ /,/g' | sed 's/^/[/g' | sed 's/$/]/g'
+}
+
+spaces $monitor_id
+socat -u UNIX-CONNECT:/tmp/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - | while read -r line; do
+	spaces $monitor_id
+done

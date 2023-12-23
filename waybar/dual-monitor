@@ -1,0 +1,80 @@
+[
+    {
+        "layer": "top",
+        "position": "top",
+        "output": "HDMI-A-1",
+        "spacing": 4,
+        "modules-left": [
+            "wireplumber",
+            "battery",
+            "custom/player"
+        ],
+        "modules-center": [
+            "hyprland/workspaces"
+        ],
+        "modules-right": [
+            "tray",
+            "clock"
+        ],
+        "tray": {
+            "spacing": 8
+        },
+        "clock": {
+            "format": "{: %X}",
+            "tooltip-format": "<tt><big>{calendar}</big></tt>",
+            "locale": "pt_BR.UTF-8",
+            "interval": 1,
+            "calendar": {
+                "format": {
+                    "today": "<span color='#31748f'><u>{}</u></span>"
+                }
+            }
+        },
+        "battery": {
+            "states": {
+                "good": 95,
+                "warning": 50,
+                "critical": 20
+            },
+            "format": "{icon}{capacity}%",
+            "format-charging": " {capacity}%",
+            "format-plugged": " {capacity}%",
+            "format-icons": [
+                "󰂎",
+                "󰁺",
+                "󰁻",
+                "󰁼",
+                "󰁽",
+                "󰁾",
+                "󰁿",
+                "󰂀",
+                "󰂁",
+                "󰂂",
+                "󰁹"
+            ]
+        },
+        "wireplumber": {
+            "format": "󰕾 {volume}%",
+            "format-muted": "    󰝟    ",
+            "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
+            "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_SINK@ 5%+",
+            "on-scroll-down": "wpctl set-volume @DEFAULT_SINK@ 5%-",
+            "on-click-right": "pavucontrol"
+        },
+        "custom/player": {
+            "exec": "playerctl metadata --format '{{ artist }} - {{ title }}'",
+            "interval": 2,
+            "on-click": "playerctl play-pause",
+            "escape": true,
+            "tooltip": false
+        }
+    },
+    {
+        "layer": "top",
+        "position": "top",
+        "output": "eDP-1",
+        "modules-center": [
+            "hyprland/workspaces"
+        ]
+    }
+]

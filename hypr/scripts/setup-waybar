@@ -1,0 +1,7 @@
+#! /bin/bash
+
+if [ $NB_MONITORS -eq 1 ]; then
+    waybar -c ~/.config/waybar/single-monitor
+else
+    waybar -c ~/.config/waybar/dual-monitor
+fi

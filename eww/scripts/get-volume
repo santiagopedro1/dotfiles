@@ -1,0 +1,19 @@
+#!/bin/sh
+
+old_vol=""
+
+while true; do
+    vol=$(wpctl get-volume @DEFAULT_SINK@)
+    if [[ $vol == *"MUTED"* ]]; then
+        echo "MUTED"
+        old_vol="MUTED"
+    else
+        vol=${vol#*"Volume: "}
+        vol=${vol#*"."}
+        if [[ $vol != $old_vol ]]; then
+            echo $vol
+            old_vol=$vol
+        fi
+    fi
+    sleep 0.5
+done

@@ -1,0 +1,57 @@
+@import "./catppuccin-mocha.scss";
+
+* {
+    all: unset;
+    font-family: Roboto, Symbols Nerd Font, Noto Sans JP;
+    font-weight: bold;
+}
+
+//Global Styles
+.bar {
+    background: rgba($base, 0.6);
+    color: $text;
+}
+
+// Styles on classes (see eww.yuck for more information)
+
+.workspaces {
+    padding: 0px 16px;
+}
+
+.workspaces button {
+    padding: 0px 16px;
+}
+
+.workspaces button:hover {
+    background: $surface0;
+    color: $teal;
+}
+
+.workspaces button.current {
+    background: $base;
+    color: $pink;
+}
+
+.music {
+    color: $sapphire;
+    padding: 5px 16px;
+}
+
+.volume {
+    background: red;
+    color: $rosewater;
+}
+
+.sidestuff {
+    margin-right: 16px;
+}
+
+// every sidestuff child
+.sidestuff>* {
+    padding: 5px 0px;
+}
+
+.timeanddate:hover {
+    background: $surface0;
+    color: $teal;
+}

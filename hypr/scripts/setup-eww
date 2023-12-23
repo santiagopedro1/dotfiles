@@ -1,0 +1,13 @@
+#! /bin/bash
+
+eww daemon
+
+if [ $NB_MONITORS -eq 1 ]; then
+    eww open main-bar
+else
+    hyprctl dispatch focusmonitor 1
+    eww open main-bar --screen 1
+
+    hyprctl dispatch focusmonitor 0
+    eww open secondary-bar --screen 0
+fi

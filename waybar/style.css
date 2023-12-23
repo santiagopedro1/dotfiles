@@ -1,0 +1,83 @@
+@import "./catppuccin-mocha.css";
+
+/* reset */
+* {
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+#waybar {
+    background: rgba(30, 30, 46, 0.6);
+    font-family: Roboto, Symbols Nerd Font, Noto Sans JP;
+    font-weight: bold;
+}
+
+tooltip {
+    background: @overlay;
+    border: 2px solid @highlightHigh;
+}
+
+#clock,
+#battery,
+#workspaces,
+#wireplumber,
+#tray,
+#worspaces {
+    padding: 0px 10px;
+    border: 1px solid @highlightHigh;
+}
+
+#workspaces {
+    padding: 0px;
+}
+
+#workspaces button {
+    padding: 1px 4px;
+    color: @text
+}
+
+#workspaces button.active {
+    color: @love;
+    background: @overlay;
+}
+
+#workspaces button.focused {
+    color: #a6adc8;
+    background: #eba0ac;
+}
+
+#workspaces button.urgent {
+    color: @gold;
+    background: @foam;
+}
+
+#workspaces button:hover {
+    box-shadow: none;
+    text-shadow: none;
+    background: @highlightLow;
+}
+
+#workspaces button:hover.active {
+    color: @love;
+    background: @overlay;
+
+}
+
+#workspaces button:hover:not(.active) {
+    color: white;
+}
+
+#clock {
+    color: @rose;
+}
+
+#wireplumber {
+    color: @foam;
+}
+
+#battery {
+    color: @iris;
+}

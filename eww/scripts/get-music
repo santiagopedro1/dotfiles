@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Initialize variables to store the current song and artist
+current_song=""
+current_artist=""
+
+while true; do
+    # Get the artist of the currently playing song
+    artist=$(playerctl metadata artist)
+
+    # Get the title of the currently playing song
+    song=$(playerctl metadata title)
+
+    # Check if the song or artist has changed
+    if [ "$song" != "$current_song" ] || [ "$artist" != "$current_artist" ]; then
+        # Update the current song and artist
+        current_song=$song
+        current_artist=$artist
+
+        # Check if the artist is empty
+        if [ -z "$artist" ]; then
+            echo ""
+        else
+            echo "$artist - $song"
+        fi
+    fi
+
+    # Wait for a second before the next iteration
+    sleep 1
+done

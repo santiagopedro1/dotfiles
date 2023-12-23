@@ -1,0 +1,8 @@
+#!/bin/bash
+
+acpi_output=$(acpi -b)
+status=$(echo $acpi_output | awk -F', ' '{print $1}' | awk -F': ' '{print $2}')
+charge=$(echo $acpi_output | awk -F', ' '{print $2}' | awk -F'%' '{print $1}')
+
+jq -n --arg status "$status" --arg charge "$charge" \
+'{"status": $status, "charge": $charge}'
