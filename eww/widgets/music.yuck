@@ -1,0 +1,12 @@
+(defwidget music [music]
+  (button
+    :class "widget music"
+    :visible {music != ""}
+    :onclick "playerctl play-pause"
+    (image
+      :image-width 16
+      :image-height 16
+      :path "icons/music.png"
+    )
+  )
+)

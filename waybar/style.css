@@ -13,21 +13,31 @@
     background: rgba(30, 30, 46, 0.6);
     font-family: Roboto, Symbols Nerd Font, Noto Sans JP;
     font-weight: bold;
+    color: @text;
 }
 
 tooltip {
-    background: @overlay;
-    border: 2px solid @highlightHigh;
+    background: @mantle;
+    border: 2px solid @surface0;
+    color: @text;
 }
 
-#clock,
-#battery,
-#workspaces,
-#wireplumber,
-#tray,
-#worspaces {
-    padding: 0px 10px;
-    border: 1px solid @highlightHigh;
+.modules-left {
+    padding-left: 10px;
+}
+
+.modules-right {
+    padding-right: 10px;
+}
+
+#tray {
+    margin-right: 5px;
+    padding: 4px;
+    background: @base;
+}
+
+#custom-player {
+    color: @mauve    
 }
 
 #workspaces {
@@ -35,23 +45,23 @@ tooltip {
 }
 
 #workspaces button {
-    padding: 1px 4px;
+    padding: 1px 6px;
     color: @text
 }
 
 #workspaces button.active {
-    color: @love;
-    background: @overlay;
+    color: @peach;
+    background: @surface2;
 }
 
 #workspaces button.focused {
-    color: #a6adc8;
-    background: #eba0ac;
+    color: @red;
+    background: @marron;
 }
 
 #workspaces button.urgent {
-    color: @gold;
-    background: @foam;
+    color: @red;
+    background: @marron;
 }
 
 #workspaces button:hover {
@@ -61,9 +71,8 @@ tooltip {
 }
 
 #workspaces button:hover.active {
-    color: @love;
-    background: @overlay;
-
+    color: @mauve;
+    background: @surface2;
 }
 
 #workspaces button:hover:not(.active) {
@@ -71,13 +80,16 @@ tooltip {
 }
 
 #clock {
-    color: @rose;
+    color: @green;
 }
 
 #wireplumber {
-    color: @foam;
+    padding: 3px;
+    color: @flamingo;
 }
 
 #battery {
-    color: @iris;
+    padding: 3px;
+    color: @sapphire;
+    margin-right: 5px;
 }

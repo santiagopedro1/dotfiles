@@ -1,19 +1,25 @@
-#!/bin/sh
+#!/bin/bash
 
-old_vol=""
+# Initialize volume variable
+prev_volume=""
 
 while true; do
-    vol=$(wpctl get-volume @DEFAULT_SINK@)
-    if [[ $vol == *"MUTED"* ]]; then
-        echo "MUTED"
-        old_vol="MUTED"
-    else
-        vol=${vol#*"Volume: "}
-        vol=${vol#*"."}
-        if [[ $vol != $old_vol ]]; then
-            echo $vol
-            old_vol=$vol
+    # Get the current volume
+    current_volume=$(wpctl get-volume @DEFAULT_SINK@)
+
+    # If the volume has changed, echo it
+    if [ "$current_volume" != "$prev_volume" ]; then
+        if [[ $current_volume == *"[MUTED]"* ]]; then
+            echo "MUTED"
+        else
+            # Extract the volume decimal and convert to percentage
+            volume_decimal=${current_volume#*: }
+            volume_percentage=$(echo "scale=0; $volume_decimal * 100 / 1" | bc)
+            echo $volume_percentage
         fi
+        prev_volume=$current_volume
     fi
+
+    # Wait before checking again
     sleep 0.5
 done

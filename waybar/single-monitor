@@ -4,15 +4,15 @@
     "output": "e-DP-1",
     "spacing": 4,
     "modules-left": [
-        "wireplumber",
-        "battery",
+        "tray",
         "custom/player"
     ],
     "modules-center": [
         "hyprland/workspaces"
     ],
     "modules-right": [
-        "tray",
+        "wireplumber",
+        "battery",
         "clock"
     ],
     "tray": {
@@ -25,7 +25,7 @@
         "interval": 1,
         "calendar": {
             "format": {
-                "today": "<span color='#31748f'><u>{}</u></span>"
+                "today": "<span color='#94e2d5'><u>{}</u></span>"
             }
         }
     },
@@ -61,7 +61,7 @@
         "on-click-right": "pavucontrol"
     },
     "custom/player": {
-        "exec": "playerctl metadata --format '{{ artist }} - {{ title }}'",
+        "exec": "playerctl metadata --format ' {{ artist }} - {{ title }}'",
         "interval": 2,
         "on-click": "playerctl play-pause",
         "escape": true,

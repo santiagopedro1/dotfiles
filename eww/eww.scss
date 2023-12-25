@@ -2,24 +2,26 @@
 
 * {
     all: unset;
+}
+
+.main-bar, .secondary-bar {
+    background: $base;
+    color: $text;
     font-family: Roboto, Symbols Nerd Font, Noto Sans JP;
     font-weight: bold;
+    font-size: 16px;
 }
 
-//Global Styles
-.bar {
-    background: rgba($base, 0.6);
-    color: $text;
+.widget {
+    border-radius: 24px;
 }
 
-// Styles on classes (see eww.yuck for more information)
-
-.workspaces {
-    padding: 0px 16px;
+.widget:hover {
+    background-color: black;
 }
 
 .workspaces button {
-    padding: 0px 16px;
+    padding: 2px 16px;
 }
 
 .workspaces button:hover {
@@ -32,26 +34,14 @@
     color: $pink;
 }
 
-.music {
-    color: $sapphire;
-    padding: 5px 16px;
+.date, .volume, .battery-status {
+    padding: 2px 16px;
+}
+
+.battery-status {
+    color: $maroon;
 }
 
 .volume {
-    background: red;
-    color: $rosewater;
-}
-
-.sidestuff {
-    margin-right: 16px;
-}
-
-// every sidestuff child
-.sidestuff>* {
-    padding: 5px 0px;
-}
-
-.timeanddate:hover {
-    background: $surface0;
     color: $teal;
 }

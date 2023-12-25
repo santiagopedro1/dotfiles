@@ -4,5 +4,20 @@ acpi_output=$(acpi -b)
 status=$(echo $acpi_output | awk -F', ' '{print $1}' | awk -F': ' '{print $2}')
 charge=$(echo $acpi_output | awk -F', ' '{print $2}' | awk -F'%' '{print $1}')
 
-jq -n --arg status "$status" --arg charge "$charge" \
-'{"status": $status, "charge": $charge}'
+icon=""
+
+if [ $status == "Discharging" ]; then
+    if [ $charge -ge 75 ]; then
+        icon="/home/pedro/.config/eww/icons/battery-full.png"
+    elif [ $charge -ge 50 ]; then
+        icon="/home/pedro/.config/eww/icons/battery-medium.png"
+    elif [ $charge -ge 25 ]; then
+        icon="/home/pedro/.config/eww/icons/battery-low.png"
+    else
+        icon="/home/pedro/.config/eww/icons/battery-warning.png"
+fi
+else
+    icon="/home/pedro/.config/eww/icons/battery-charging.png"
+fi
+
+echo "{\"charge\": \"$charge\", \"status\": \"$status\", \"icon\": \"$icon\"}"

@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Check for wired connection
+wired=$(nmcli dev | grep 'ethernet' | grep 'connected')
+if [[ $wired ]]; then
+    echo "Wired connection detected."
+    exit 0
+fi
+
+# Check for wireless connection
+wireless=$(nmcli dev | grep 'wifi' | grep 'connected')
+if [[ $wireless ]]; then
+    echo "WiFi connection detected."
+    # Get the WiFi signal strength and SSID
+    wifi_info=$(nmcli -f IN-USE,SIGNAL,SSID dev wifi | grep '*')
+    echo $wifi_info
+    # signal strength is the second to last field
+    signal_strength=$(echo $wifi_info | awk '{print $(NF-1)}')
+    ssid=$(echo $wifi_info | awk '{print $NF}')
+    # Classify the signal strength
+    if (( signal_strength >= 70 )); then
+        echo "Signal strength: High"
+    elif (( signal_strength >= 30 )); then
+        echo "Signal strength: Medium"
+    else
+        echo "Signal strength: Low"
+    fi
+    echo "Connected to SSID: $ssid"
+    exit 0
+fi
+
+# No network detected
+echo "No network detected."

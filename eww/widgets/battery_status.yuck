@@ -1,0 +1,17 @@
+(defwidget battery_status [battery_status]
+  (eventbox
+    :class "widget battery-status"
+    (box
+      :class "widget battery-status"
+      :halign "center"
+      (image
+        :image-width 16
+        :image-height 16
+        :path "${battery_status.icon}"
+      )
+      "${battery_status.charge}%"
+      ; (label :text "${battery_status.charge}%")
+    )
+    
+  )
+)

@@ -1,0 +1,6 @@
+(defwidget date [date]
+  (button
+    :class "widget date"
+    "${date}"
+  )
+)

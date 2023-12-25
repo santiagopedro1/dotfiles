@@ -1,0 +1,18 @@
+(defwidget volume [volume]
+  (eventbox
+    :class "widget volume"
+    :onclick "wpctl set-mute @DEFAULT_SINK@ toggle"
+    :onrightclick "pavucontrol &"
+    :onscroll "bash scripts/set-volume {}"
+    (box
+      :class "widget volume"
+      :halign "center"
+      (image
+        :image-width 16
+        :image-height 16
+        :path "${volume == 'MUTED' ? '/home/pedro/.config/eww/icons/volume-muted.png' : '/home/pedro/.config/eww/icons/volume.png'}"
+      )
+      "${volume == 'MUTED' ? '' : '${volume}%'}"
+    )
+  )
+)

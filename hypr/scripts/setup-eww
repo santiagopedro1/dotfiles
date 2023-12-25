@@ -2,12 +2,19 @@
 
 eww daemon
 
-if [ $NB_MONITORS -eq 1 ]; then
+nb_monitors=$(hyprctl monitors -j | jq length)
+
+if [ $nb_monitors -eq 1 ]; then
     eww open main-bar
 else
+    eww update nb_monitors=$nb_monitors
     hyprctl dispatch focusmonitor 1
     eww open main-bar --screen 1
 
     hyprctl dispatch focusmonitor 0
     eww open secondary-bar --screen 0
+
+    hyprctl dispatch workspace 5
+    hyprctl dispatch focusmonitor 1
+    hyprctl dispatch workspace 1
 fi

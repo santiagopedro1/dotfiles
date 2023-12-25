@@ -1,0 +1,12 @@
+(defwidget workspaces [workspaces current_workspace]
+  (box
+    :class " widget workspaces"
+    :halign "start"
+    (for workspace in workspaces
+      (button :class "workspace-entry ${workspace == current_workspace ? "current" : ""}"
+        :onclick "hyprctl dispatch workspace ${workspace}"
+        (label :text "${workspace}")
+      )
+    )
+  )
+)
