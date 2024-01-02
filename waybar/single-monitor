@@ -2,27 +2,27 @@
     "layer": "top",
     "position": "top",
     "output": "e-DP-1",
-    "spacing": 4,
+    "spacing": 6,
     "modules-left": [
-        "tray",
+        "hyprland/workspaces",
         "custom/player"
     ],
     "modules-center": [
-        "hyprland/workspaces"
+        "clock"
     ],
     "modules-right": [
+        "tray",
         "wireplumber",
-        "battery",
-        "clock"
+        "battery"
     ],
     "tray": {
         "spacing": 8
     },
     "clock": {
-        "format": "{: %X}",
+        "format": "{:%A, %d %B %H:%M}",
         "tooltip-format": "<tt><big>{calendar}</big></tt>",
         "locale": "pt_BR.UTF-8",
-        "interval": 1,
+        "interval": 10,
         "calendar": {
             "format": {
                 "today": "<span color='#94e2d5'><u>{}</u></span>"
@@ -54,17 +54,19 @@
     },
     "wireplumber": {
         "format": "󰕾 {volume}%",
-        "format-muted": "    󰝟    ",
+        "format-muted": "󰝟",
+        "min-length": 7,
         "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
         "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_SINK@ 5%+",
         "on-scroll-down": "wpctl set-volume @DEFAULT_SINK@ 5%-",
         "on-click-right": "pavucontrol"
     },
     "custom/player": {
-        "exec": "playerctl metadata --format ' {{ artist }} - {{ title }}'",
+        "exec": "~/.config/waybar/music_player",
         "interval": 2,
         "on-click": "playerctl play-pause",
         "escape": true,
-        "tooltip": false
+        "tooltip": false,
+        "max-length": 50
     }
 }

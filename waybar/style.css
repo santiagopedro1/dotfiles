@@ -10,10 +10,11 @@
 }
 
 #waybar {
-    background: rgba(30, 30, 46, 0.6);
-    font-family: Roboto, Symbols Nerd Font, Noto Sans JP;
+    background: @base;
+    font-family: Roboto, Symbols Nerd Font, Noto Sans CJK JP, Noto Sans CJK KR;
     font-weight: bold;
     color: @text;
+    font-size: 16px;
 }
 
 tooltip {
@@ -33,11 +34,10 @@ tooltip {
 #tray {
     margin-right: 5px;
     padding: 4px;
-    background: @base;
 }
 
 #custom-player {
-    color: @mauve    
+    color: @mauve;
 }
 
 #workspaces {
@@ -51,28 +51,20 @@ tooltip {
 
 #workspaces button.active {
     color: @peach;
-    background: @surface2;
-}
-
-#workspaces button.focused {
-    color: @red;
-    background: @marron;
 }
 
 #workspaces button.urgent {
     color: @red;
-    background: @marron;
 }
 
 #workspaces button:hover {
     box-shadow: none;
     text-shadow: none;
-    background: @highlightLow;
+    background: transparent;
 }
 
 #workspaces button:hover.active {
-    color: @mauve;
-    background: @surface2;
+    background: transparent;
 }
 
 #workspaces button:hover:not(.active) {
@@ -80,7 +72,7 @@ tooltip {
 }
 
 #clock {
-    color: @green;
+    color: @yellow;
 }
 
 #wireplumber {

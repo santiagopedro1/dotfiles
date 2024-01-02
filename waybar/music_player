@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Get all the metadata using playerctl
+metadata=$(playerctl metadata)
+
+# Parse the metadata to get the album, artist, and song info
+album_info=$(echo "$metadata" | grep -oP 'xesam:album\s+\K.*')
+artist_info=$(echo "$metadata" | grep -oP 'xesam:artist\s+\K.*')
+song_info=$(echo "$metadata" | grep -oP 'xesam:title\s+\K.*')
+
+# Check if the album info is empty
+if [ -z "$album_info" ]; then
+    # If empty, return an empty string
+    echo ""
+else
+    # If not empty, return the artist and song info
+    echo " $artist_info - $song_info"
+fi
